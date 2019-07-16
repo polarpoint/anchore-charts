@@ -18,8 +18,8 @@ apiService:
   group: admission.anchore.io
   version: v1beta1
 
-credentialsSecret: null
-anchoreEndpoint: ""
+credentialsSecret: anchore-credentials
+anchoreEndpoint: "https://anchore.ddsmgt.local"
 policySelectors:
   - Selector:
       ResourceType: "image"
