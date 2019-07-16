@@ -1,8 +1,9 @@
 #!/bin/bash
 
 name=${1}
+kubeConfig=${2}
 
-KUBE_CA=$(kubectl config view --minify=true --flatten -o json | jq '.clusters[0].cluster."certificate-authority-data"' -r)
+KUBE_CA=$(cat ${kubeConfig} |  grep client-certificate-data | cut -f2 -d : | tr -d ' ')
 cat > validating-webhook.yaml <<EOF
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
@@ -33,5 +34,3 @@ webhooks:
 #        operator: NotIn
 #        values: ["true"]
 EOF
-
-
