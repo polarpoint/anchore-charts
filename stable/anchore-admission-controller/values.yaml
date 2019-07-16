@@ -5,7 +5,7 @@
 replicaCount: 1
 logVerbosity: 6
 
-image: "anchore/kubernetes-admission-controller:v0.2.1"
+image: "polarpoint/anchore-admission-controller:0.1.0"
 imagePullPolicy: IfNotPresent
 
 service:
